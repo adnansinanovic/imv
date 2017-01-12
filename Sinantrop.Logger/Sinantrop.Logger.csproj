@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C4B4948A-0F90-403B-9F54-75C70FF84B53}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sinantrop.Logger</RootNamespace>
+    <AssemblyName>Sinantrop.Logger</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Appender\BaseAppender.cs" />
+    <Compile Include="Appender\ConsoleAppender.cs" />
+    <Compile Include="Appender\FileAppender.cs" />
+    <Compile Include="Appender\IAppender.cs" />
+    <Compile Include="Appender\SmtpAppender.cs" />
+    <Compile Include="Dumper\Formatter\DateTimeDumpFormatter.cs" />
+    <Compile Include="Dumper\Formatter\IDumpFormatter.cs" />
+    <Compile Include="Dumper\Formatter\InternalDumperFormatter.cs" />
+    <Compile Include="Dumper\IObjectDumper.cs" />
+    <Compile Include="Dumper\NameContainer.cs" />
+    <Compile Include="Dumper\DumperConfiguration.cs" />
+    <Compile Include="Dumper\TraversalDumper.cs" />
+    <Compile Include="Dumper\TraverseNode.cs" />
+    <Compile Include="Helpers\ByteSize.cs" />
+    <Compile Include="Configuration\ILoggerConfiguration.cs" />
+    <Compile Include="Layout\SimpleInlineLayout.cs" />
+    <Compile Include="Layout\SimpleLayout.cs" />
+    <Compile Include="Layout\ILayout.cs" />
+    <Compile Include="LogEvent.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Configuration\LoggerConfiguration.cs" />
+    <Compile Include="LogLevel.cs" />
+    <Compile Include="Pattern\CurrentDateTimePattern.cs" />
+    <Compile Include="Pattern\DefaultHeaderPattern.cs" />
+    <Compile Include="Pattern\IPattern.cs" />
+    <Compile Include="Pattern\ValuePattern.cs" />
+    <Compile Include="ProducerConsumerPattern\ProducerConsumer.cs" />
+    <Compile Include="ProducerConsumerPattern\ProducerConsumerItem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rules\DebuggerAttachedRule.cs" />
+    <Compile Include="Rules\IRule.cs" />
+    <Compile Include="Rules\LogLeveGreaterThanRule.cs" />
+    <Compile Include="Rules\LogLevelEqualRule.cs" />
+    <Compile Include="Rules\LogLevelLessThanRule.cs" />
+    <Compile Include="StaticLogger.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sinantrop.IMV\Sinantrop.IMV.csproj">
+      <Project>{9AB17317-22CF-43FA-9A29-3997178877A0}</Project>
+      <Name>Sinantrop.IMV</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
